@@ -1,3 +1,5 @@
+import os
+
 """
 Django settings for mysite project.
 
@@ -27,6 +29,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = '/chat/login/'
+LOGIN_REDIRECT_URL = '/'
+
 
 # Application definition
 
@@ -37,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'chat',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +60,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'chat/templates/pages/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -1,9 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 from django.http import HttpResponse
 
-
+@login_required
 def index(request):
-    return HttpResponse("Hello, world. You're at the chat index.")
+    return render(request, 'index.html')
+
+def register(request):
+    print()
