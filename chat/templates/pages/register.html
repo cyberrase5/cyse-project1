@@ -1,0 +1,14 @@
+<form action="/chat/register/" method="POST">
+    {% csrf_token %}
+    Username:
+    <input type="text" name="username" , maxlength="20">
+    <br>
+    Salasana:
+    <input type="password" name="password">
+    <br>
+    I am:<br>
+    <input type="radio" name="type" value=0> Normal user
+    <input type="radio" name="type" value=1> Moderator
+    <br><br>
+    <input type="submit" value="Lähetä">
+</form>
