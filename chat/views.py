@@ -73,7 +73,6 @@ def delete(request, message_id):
     message.delete()
     return redirect('/chat/admin')
 
-@staff_member_required
 def logs(request):
     f = open("log.txt", "r")
     logs = []
