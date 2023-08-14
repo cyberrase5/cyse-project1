@@ -35,7 +35,7 @@ Now create an account with the malicious "username", and this time you will not 
 
 #### Fixing it
 Link here\
-The main fix is parameterized queries. Also fetchall() has been changed to fetchone() and in the retrun render command response[0] is used as additional security, so that even if the response contained passwords, only the first one would be leaked. Now test the fixed version. Comment the code between the comments BEGIN and END BROKEN VERSION and uncomment the FIXED VERSION one and test the previous injection, it doesn't work.
+The main fix is parameterized queries. Also fetchall() has been changed to fetchone() and in the return render command response[0] is used as additional security, so that even if the response contained passwords, only the first one would be leaked. Now test the fixed version. Comment the code between the comments BEGIN and END BROKEN VERSION and uncomment the FIXED VERSION one and test the previous injection, it doesn't work.
 
 ### A5:2017-Broken Access Control
 https://github.com/cyberrase5/cyse-project1/blob/master/chat/views.py#L66
@@ -86,7 +86,7 @@ I have removed CSRF safeguards in posting new messages by using the @csrf_exempt
 #### Test it yourself
 I'm not entirely sure if I did it correct, but here's what I did: I fired up my old Tsoha app (which uses Flask and starts an app at localhost:5000), modified one of the html forms to 1. ```<form action="http://127.0.0.1:8000/chat/" method="POST">``` and 2. added field ```<input type="hidden" name="content" value="I will kill you all hahahha">```. Submitting the form redirects you to the chat app front page. which contains the nasty message that you didn't send.
 
-Even if this isn't how it actually works (because of the same address localhost the app thinks it's the same site etc.) the idea is the same, a site has a malicious form that posts to somewhere else you think it does etc. I don't have access to a site in the real internet, so this will have to do.
+Even if this isn't how it actually works (because of the same address localhost the app thinks it's the same site or something like that.) the idea is the same, a site has a malicious form that posts to somewhere else you think it does etc. I don't have access to a site in the real internet, so this will have to do.
 
 #### Fixing it
 Remove the @csrf_exempt decorator from views.py index() and uncomment the {% csrf_token %} in index.html. If you now attempt the above, it will redirect to Forbidden 403 Django page.
