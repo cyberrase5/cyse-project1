@@ -16,6 +16,6 @@
 
 {% for message in messages %}
 <!-- {{ message.content }} -->
-<p>{{ message.content|safe }}<br>
+<p>{{ message.content|safe }} (id: {{ message.id }})<br>
   By {{ message.sender.username}} {{ message.time }} </p>
 {% endfor %}

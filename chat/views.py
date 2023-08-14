@@ -29,15 +29,29 @@ def register(request):
         password = request.POST.get('password')
         admin = request.POST.get('type')
 
+        # INJECTION
         # app crashes if name is not unique, test it here
         conn = sqlite3.connect('db.sqlite3')
         cursor = conn.cursor()
+
+        # BEGIN BROKEN VERSION
         sql = "SELECT username FROM auth_user WHERE username='" + username + "'"
         response = cursor.execute(sql).fetchall()
         
         # response returns a list
         if len(response) != 0:
             return render(request, 'register.html', {'msg': f'Username {response} already in use'})
+        # END BROKEN VERSION
+
+
+        # BEGIN FIXED VERSION
+
+        # response = cursor.execute("SELECT username FROM auth_user WHERE username=?", [username]).fetchone()
+
+        # if response != None:
+        #     return render(request, 'register.html', {'msg': f'Username {response} already in use'})
+
+        # END FIXED VERSION
 
         # Insufficient Logging & Monitoring
         # log_register(request, username)
