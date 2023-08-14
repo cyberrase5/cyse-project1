@@ -4,11 +4,13 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.models import User
 from .models import Messages
 from datetime import date
+from django.views.decorators.csrf import csrf_exempt
 import sqlite3
 
 # Create your views here.
 
 @login_required
+@csrf_exempt
 def index(request):
     if request.method == 'GET':
         admin = User.objects.get(username=request.user).is_staff
@@ -89,3 +91,6 @@ def log_register(request, username):
         f = open("log.txt", "a")
         f.write(f"{date.today()} --- {ip_addr} registered account {username} \n")
         f.close()
+
+def forgery(request):
+    return render(request, 'forgery.html')

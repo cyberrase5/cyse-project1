@@ -6,7 +6,7 @@
 
 <h5>Send a message:</h5>
 <form action="/chat/" method="POST">
-  {% csrf_token %}
+  <!-- {% csrf_token %} -->
   <textarea name="content" rows="4" cols="50"></textarea>
   <br>
   <button type="submit">Send message</button>
