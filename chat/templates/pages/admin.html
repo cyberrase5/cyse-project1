@@ -1,0 +1,8 @@
+<a href="/chat/">Front page</a><br>
+<h1>Admin panel</h1>
+<a href="/chat/logs/">Registration log</a><br>
+
+{% for message in messages %}
+<p>{{ message.content }}  <a href="/chat/delete/{{message.id}}">Poista viesti</a> <br>
+    By {{ message.sender.username}} {{ message.time }} </p>
+{% endfor %}

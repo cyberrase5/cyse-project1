@@ -1,1 +1,21 @@
-Moi
+{% if admin %}
+<a href="/chat/admin">Admin page</a>
+{% endif %}
+
+<h1>Welcome to Twatter!</h1>
+
+<h5>Send a message:</h5>
+<form action="/chat/" method="POST">
+  {% csrf_token %}
+  <textarea name="content" rows="4" cols="50"></textarea>
+  <br>
+  <button type="submit">Send message</button>
+</form>
+
+<h5>Messages</h5>
+
+{% for message in messages %}
+<!-- {{ message.content }} -->
+<p>{{ message.content|safe }}<br>
+  By {{ message.sender.username}} {{ message.time }} </p>
+{% endfor %}

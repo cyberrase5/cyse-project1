@@ -1,7 +1,9 @@
 <form action="/chat/register/" method="POST">
     {% csrf_token %}
     Username:
-    <input type="text" name="username" , maxlength="20">
+    <input type="text" name="username">
+    <br>
+    <font color="red">{{ msg }}</font>
     <br>
     Salasana:
     <input type="password" name="password">

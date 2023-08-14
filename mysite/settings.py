@@ -32,6 +32,9 @@ ALLOWED_HOSTS = []
 LOGIN_URL = '/chat/login/'
 LOGIN_REDIRECT_URL = '/'
 
+LOGOUT_URL = '/chat/logout/'
+LOGOUT_REDIRECT_URL = '/'
+
 
 # Application definition
 
